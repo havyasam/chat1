@@ -82,22 +82,4 @@ function scrollToBottom() {
 // updateUserNotification(message,'help')
 // scrollToBottom();
 // });
-let userCount = 0;
-const userLimit = 2;
 
-io.on('connection', (socket) => {
-  if (userCount < userLimit) {
-    // Allow the connection
-    userCount++;
-    // Your connection logic here
-  } else {
-    // Reject the connection
-    socket.disconnect(true);
-  console.log("stop u idiot")
-  }
-
-  socket.on('disconnect', () => {
-    // Decrement the counter when a user disconnects
-    userCount--;
-  });
-});
