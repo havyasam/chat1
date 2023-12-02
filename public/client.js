@@ -1,4 +1,4 @@
-const socket = io.connect('http://localhost:3000/');
+const socket = io.connect('https://chat4-r38x.onrender.com/');
 let name;
 let textarea = document.querySelector('#textarea');
 let messageArea = document.querySelector('.message__area');
@@ -82,4 +82,4 @@ function scrollToBottom() {
 // updateUserNotification(message,'help')
 // scrollToBottom();
 // });
-
+  
