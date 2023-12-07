@@ -10,41 +10,27 @@ const io = new Server(server);
 
 app.use(express.static(__dirname + '/public'));
 app.use('/public',express.static(__dirname +'/public'));
-app.use('/js',express.static(__dirname +'/js'));
-
 
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'index.html'));
 });
 
-
-
 io.on('connection', (socket) => {
+  socket.broadcast.emit('userJoined', { username: 'New User' });
  
-  console.log('a user connected');
   socket.on('message', (msg) => {
     socket.broadcast.emit('message',msg)
+    
+    
   })
-});
-let userCount = 0;
-const userLimit = 2;
-
-io.on('connection', (socket) => {
-  if (userCount < userLimit) {
-    // Allow the connection
-    userCount++;
-    // Your connection logic here
-  } else {
-    // Reject the connection
-    socket.disconnect(true);
-  console.log("stop u idiot")
-  }
-
-  socket.on('disconnect', () => {
-    // Decrement the counter when a user disconnects
-    userCount--;
+  socket.on('typing', () => {
+    // Broadcast a "typing" message to all connected clients except the sender
+    socket.broadcast.emit('typing', { username: 'new user' });
+    
+      
+    });
   });
-});
+
 
 server.listen(3000, () => {
   console.log('server running at http://localhost:3000');

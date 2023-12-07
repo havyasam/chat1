@@ -1,4 +1,4 @@
-const socket = io.connect('https://chat4-r38x.onrender.com/');
+const socket = io.connect('https://chat1-ozya.onrender.com/');
 let name;
 let textarea = document.querySelector('#textarea');
 let messageArea = document.querySelector('.message__area');
@@ -14,11 +14,17 @@ const append=(message,position)=>{
   messages.classList.add('position');
   messageArea.append(messages)
 }
-socket.on('message',data=>{
+socket.on('userJoined',(data)=>{
   append("joined the chat")
 })
-// Connect to the socket.io server on the client side
- // Replace with your server's URL
+socket.on('typing', (data) => {
+  append("typing")
+});
+socket.on('updateOnlineUsers', (onlineUsers) => {
+  console.log('Online users: ', onlineUsers);
+  // Update your UI or take any necessary actions with the updated list of online users
+});
+
 
 textarea.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
