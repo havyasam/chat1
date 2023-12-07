@@ -1,4 +1,4 @@
-const socket = io.connect('https://chat1-ozya.onrender.com/');
+const socket = io.connect('http://localhost:3000/');
 let name;
 let textarea = document.querySelector('#textarea');
 let messageArea = document.querySelector('.message__area');
@@ -22,7 +22,7 @@ socket.on('typing', (data) => {
 });
 socket.on('updateOnlineUsers', (onlineUsers) => {
   console.log('Online users: ', onlineUsers);
-  // Update your UI or take any necessary actions with the updated list of online users
+ 
 });
 
 
@@ -46,11 +46,11 @@ function sendMessage(message) {
     message: message.trim()
   };
 
-  // Append
+  
   appendMessage(msg, 'outgoing');
   scrollToBottom();
 
-  // Send the message to the server
+  
   socket.emit('message', msg);
 }
 

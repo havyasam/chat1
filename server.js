@@ -24,7 +24,7 @@ io.on('connection', (socket) => {
     
   })
   socket.on('typing', () => {
-    // Broadcast a "typing" message to all connected clients except the sender
+   
     socket.broadcast.emit('typing', { username: 'new user' });
     
       
