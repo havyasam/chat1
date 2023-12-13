@@ -1,11 +1,13 @@
-const socket = io.connect('https://chat1-ozya.onrender.com/');
+const socket = io.connect('http://localhost:3000');
 let name;
 let textarea = document.querySelector('#textarea');
 let messageArea = document.querySelector('.message__area');
 let news = document.querySelector('.new');
+let type=document.getElementById('typing')
 do {
   name = prompt('Please enter your name');
 } while (!name);
+
 
 const append=(message,position)=>{
   const messages=document.createElement('div')
@@ -17,12 +19,18 @@ const append=(message,position)=>{
 socket.on('userJoined',(data)=>{
   append("joined the chat")
 })
+
 socket.on('typing', (data) => {
   append("typing")
 });
 socket.on('updateOnlineUsers', (onlineUsers) => {
   console.log('Online users: ', onlineUsers);
  
+});
+type.addEventListener('keydown', () => {
+  // Emit "typing" event when the user starts typing
+  socket.emit('typing');
+  console.log("helofd")
 });
 
 
@@ -79,13 +87,3 @@ socket.on('message', (msg) => {
 function scrollToBottom() {
   messageArea.scrollTop = messageArea.scrollHeight;
 }
-// function updateUserNotification(message) {
-//   console.log(message);
-//   document.getElementById('joined').innerText = message;
-// }
-
-// socket.on('newUser', (message)=>{
-// updateUserNotification(message,'help')
-// scrollToBottom();
-// });
-  

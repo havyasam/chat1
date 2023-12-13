@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
   })
   socket.on('typing', () => {
    
-    socket.broadcast.emit('typing', { username: 'new user' });
+    socket.broadcast.emit('typing', socket.id);
     
       
     });

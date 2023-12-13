@@ -11,7 +11,9 @@
   
     justify-content: center;
     min-height: 100vh;
-    background:lavender;
+    background-image: url("https://wallpaperaccess.com/full/3204572.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
     font-family: "Roboto", sans-serif;
   }
   
@@ -68,11 +70,13 @@
   .incoming {
     background: #8f8be8;
     color: #CDC5BD;
+   margin-right: auto;
   }
   .outgoing {
     background: #e9eafd;
     color: #787986;
     margin-left: auto;
+    border: 1px solid rgb(93, 18, 210);
   }
   .message h4 {
     position: absolute;
