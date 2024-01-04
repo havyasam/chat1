@@ -1,4 +1,4 @@
-const socket = io.connect('http://localhost:3000');
+const socket = io.connect(' https://havyasam.github.io/chat2/');
 let name;
 let textarea = document.querySelector('#textarea');
 let messageArea = document.querySelector('.message__area');
@@ -77,7 +77,7 @@ function appendMessage(msg, type) {
   messageArea.appendChild(mainDiv);
 }
 
-// Receive messages from the server
+
 socket.on('message', (msg) => {
   
   appendMessage(msg, 'incoming');
