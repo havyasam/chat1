@@ -1,4 +1,4 @@
-const socket = io.connect(' https://havyasam.github.io/chat2/');
+const socket = io.connect('https://chat1-ozya.onrender.com/');
 let name;
 let textarea = document.querySelector('#textarea');
 let messageArea = document.querySelector('.message__area');
