@@ -16,21 +16,11 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  socket.broadcast.emit('userJoined', { username: 'New User' });
- 
+  console.log('a user connected');
   socket.on('message', (msg) => {
     socket.broadcast.emit('message',msg)
-    
-    
   })
-  socket.on('typing', () => {
-   
-    socket.broadcast.emit('typing', socket.id);
-    
-      
-    });
-  });
-
+});
 
 server.listen(3000, () => {
   console.log('server running at http://localhost:3000');
